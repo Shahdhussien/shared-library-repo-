@@ -1,61 +1,3 @@
-// // def call() {
-// //     return {
-// //         stage('Push Manifests') {
-// //             sshagent(['github']) {
-// //                 sh '''
-// //                     echo "hhhhhhhhhhh"
-// //                     git config user.name "Jenkins"
-// //                     git config user.email "jenkins@example.com"
-// //                     git remote set-url origin git@github.com:Shahdhussien/shared-library-repo-.git
-// //                     git checkout main
-// //                     git add .
-// //                     git commit -m "Update manifests from Jenkins pipeline" || echo "No changes"
-// //                     git push origin main
-// //                 '''
-// //             }
-// //         }
-// //     }
-// // }
-
-// def call() {
-//     stage('Push Manifests') {
-//         withCredentials([usernamePassword(credentialsId: 'github-creds')]) {
-//     sh '''
-//         eval $(ssh-agent)
-//         ssh-add $SSH_KEY
-//         git config user.name "Jenkins"
-//         git config user.email "jenkins@example.com"
-//         git remote set-url origin git@github.com:Shahdhussien/shared-library-repo-.git
-//         git checkout main
-//         git add .
-//         git commit -m "Update manifests from Jenkins pipeline" || echo "No changes"
-//         git push origin main
-//     '''
-// }
-    
-//     }
-// }
-
-// def call() {
-//     stage('Push Manifests') {
-//         withCredentials([usernamePassword(
-//             credentialsId: 'github-creds', 
-//             usernameVariable: 'GIT_USER', 
-//             passwordVariable: 'GIT_TOKEN'
-//         )]) {
-//             sh '''
-//                 git config user.name "Jenkins"
-//                 git config user.email "jenkins@example.com"
-//                 git remote set-url origin https://${GIT_USER}:${GIT_TOKEN}@github.com/Shahdhussien/shared-library-repo-.git
-//                 git checkout main
-//                 git add .
-//                 git commit -m "Update manifests from Jenkins pipeline" || echo "No changes"
-//                 git push origin main
-//             '''
-//         }
-//     }
-// }
-
 def call() {
     stage('Push Manifests') {
         withCredentials([usernamePassword(
@@ -68,21 +10,25 @@ def call() {
                 git config user.email "jenkins@example.com"
                 git remote set-url origin https://${GIT_USER}:${GIT_TOKEN}@github.com/Shahdhussien/shared-library-repo-.git
 
-                # ✅ نكمّت التغييرات المحلية الأول
+                # 🔄 تأكد إنك على فرع main
+                git checkout main
+
+                # ✅ احفظ أي تغييرات علشان pull يشتغل
                 git add .
                 git commit -m "Temp commit before pull" || echo "No changes"
 
-                # 🔁 نعمل pull
+                # 🧲 pull بـ rebase عشان ما يحصلش تعارض
                 git pull --rebase origin main
 
-                # ✅ نكمّت تاني بعد الدمج
+                # ✅ اعمل التعديلات المطلوبة (لو في أي فرق)
                 git add .
                 git commit -m "Update manifests from Jenkins pipeline" || echo "No changes"
 
-                # ⬆️ نـ Push
+                # ⬆️ Push للفرع الأصلي
                 git push origin main
             '''
         }
     }
 }
+
 
