@@ -8,24 +8,25 @@ def call() {
             passwordVariable: 'GIT_TOKEN'
         )]) {
             sh '''
-                git config user.name "Jenkins"
-                git config user.email "jenkins@example.com"
-                git remote set-url origin https://${GIT_USER}:${GIT_TOKEN}@github.com/Shahdhussien/shared-library-repo-.git
-                git add .
-                git pull --rebase origin main
-                git add .
-                git commit -m "Temp stash before checkout" || echo "No changes"
-            
+    git config user.name "Jenkins"
+    git config user.email "jenkins@example.com"
+    git remote set-url origin https://${GIT_USER}:${GIT_TOKEN}@github.com/Shahdhussien/shared-library-repo-.git
 
+    # ✅ كومت أي تغييرات موجودة بالفعل
+    git add -A
+    git commit -m "Temp commit before rebase" || echo "No staged changes"
 
-                # 🧲 احصل على آخر نسخة من الريموت
+    # ✅ سحب آخر نسخة من الريموت
+    git pull --rebase origin main
 
-                # ✅ أضف التغييرات الجديدة (من السطر اللي عدّلت فيه بـ sed مثلاً)
-               
+    # ✅ بعد الـ rebase، كومت أي تغييرات جديدة حصلت في البايبلاين
+    git add -A
+    git commit -m "Update manifests from Jenkins pipeline" || echo "No new changes"
 
-                # 🚀 ادفع التحديثات للـ GitHub
-                git push origin main
-            '''
+    # 🚀 بوش نهائي
+    git push origin main
+'''
+
         }
     }
 }
