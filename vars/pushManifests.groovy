@@ -3,6 +3,7 @@ def call() {
         stage('Push Manifests') {
             sshagent(['github']) {
                 sh '''
+                    echo "hhhhhhhhhhh"
                     git config user.name "Jenkins"
                     git config user.email "jenkins@example.com"
                     git remote set-url origin git@github.com:Shahdhussien/shared-library-repo-.git
