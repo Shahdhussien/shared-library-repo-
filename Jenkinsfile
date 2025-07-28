@@ -10,6 +10,7 @@ pipeline {
                 scanImage()
                 pushImage()
                 deleteImageLocally()
+                sayHello()
                 updateManifests()
                 pushManifests()
 
