@@ -1,5 +1,5 @@
 def call() {
-    stage('Update Manifests') {
+    stage('Update Manifests ') {
         echo '📝 Updating Kubernetes manifests (YAML files) using sed...'
         sh """
             grep 'image:' K8s/deployment.yaml || echo 'No image line found!'

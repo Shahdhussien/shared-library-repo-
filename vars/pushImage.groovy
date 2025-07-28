@@ -1,5 +1,5 @@
 def call() {
-    stage('Push Image') {
+    stage('Push Image ') {
         echo 'Pushing Docker image to registry...'
         withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
             sh """

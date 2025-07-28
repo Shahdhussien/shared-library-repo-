@@ -1,5 +1,5 @@
 def call() {
-    stage('Push Manifests') {
+    stage('Push Manifests ') {
         withCredentials([usernamePassword(
             credentialsId: 'github-creds', 
             usernameVariable: 'GIT_USER', 
