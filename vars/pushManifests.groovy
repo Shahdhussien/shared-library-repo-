@@ -1,5 +1,3 @@
-
-
 def call() {
     stage('Push Manifests') {
         withCredentials([usernamePassword(
