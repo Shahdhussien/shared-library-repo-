@@ -21,8 +21,8 @@ def call() {
                 git pull --rebase origin main
 
                 # ✅ أضف التغييرات الجديدة (من السطر اللي عدّلت فيه بـ sed مثلاً)
-                git add .
-                git commit -m "Update manifests from Jenkins pipeline" || echo "No changes"
+                // git add .
+                // git commit -m "Update manifests from Jenkins pipeline" || echo "No changes"
 
                 # 🚀 ادفع التحديثات للـ GitHub
                 git push origin main
