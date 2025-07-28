@@ -20,7 +20,7 @@ def call() {
         sh """
             grep 'image:' K8s/deployment.yaml || echo 'No image line found!'
             cd $WORKSPACE
-            sed -i 's|image:.*|image: shahd0/myimg:"$BUILD_NUMBER"|' K8s/deployment.yaml
+            sed -i "s|image:.*|image: shahd0/myimg:$BUILD_NUMBER|" K8s/deployment.yaml
         """
     }
 
