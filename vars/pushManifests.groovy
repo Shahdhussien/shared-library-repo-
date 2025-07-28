@@ -12,13 +12,13 @@ def call() {
                 git config user.email "jenkins@example.com"
                 git remote set-url origin https://${GIT_USER}:${GIT_TOKEN}@github.com/Shahdhussien/shared-library-repo-.git
                 git init
+                git pull --rebase origin main
                 git add .
                 git commit -m "Temp stash before checkout" || echo "No changes"
             
 
 
                 # 🧲 احصل على آخر نسخة من الريموت
-                git pull --rebase origin main
 
                 # ✅ أضف التغييرات الجديدة (من السطر اللي عدّلت فيه بـ sed مثلاً)
                
