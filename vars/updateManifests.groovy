@@ -18,6 +18,8 @@ def call() {
     stage('Update Manifests') {
         echo '📝 Updating Kubernetes manifests (YAML files) using sed...'
         sh '''
+            grep 'image:' K8s/deployment.yaml || echo 'No image line found!'
+            echo "llllllllllllllllllllllllllllllllllll"
             cd $WORKSPACE
             sed -i 's|image:.*|image: shahd0/myimg:latest|' K8s/deployment.yaml
         '''
