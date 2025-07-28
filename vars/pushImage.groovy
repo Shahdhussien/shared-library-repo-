@@ -4,7 +4,7 @@ def call() {
         withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
             sh """
                 echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-                docker tag shahd0/myimg:latest $DOCKER_USER/myimg:latestt
+                docker tag shahd0/myimg:"$$BUILD_NUMBER" $DOCKER_USER/myimg:"$$BUILD_NUMBER"
                 docker push $DOCKER_USER/myimg:"$$BUILD_NUMBER"
             """
         }
