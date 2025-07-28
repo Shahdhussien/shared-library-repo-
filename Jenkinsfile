@@ -6,13 +6,13 @@ pipeline {
         stages {
         stage('Pipeline Steps') {
             steps {
-                // buildImage()
-                // scanImage()
-                // pushImage()
-                // deleteImageLocally()
+                buildImage()
+                scanImage()
+                pushImage()
+                deleteImageLocally()
                 sayHello()
-                // updateManifests()
-                // pushManifests()
+                updateManifests()
+                pushManifests()
 
             }
         }
