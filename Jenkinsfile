@@ -12,6 +12,9 @@ pipeline {
                 deleteImageLocally()
                 updateManifests()
                 pushManifests()
+                echo 'Pushing updated manifests to Git repo...'
+                sshagent(['github']) {
+                    sh pushManifests()
             }
         }
     }
