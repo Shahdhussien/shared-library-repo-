@@ -68,10 +68,18 @@ def call() {
                 git config user.email "jenkins@example.com"
                 git remote set-url origin https://${GIT_USER}:${GIT_TOKEN}@github.com/Shahdhussien/shared-library-repo-.git
 
-                git pull --rebase origin main  # ⬅️ أضف ده قبل push
+                # ✅ نكمّت التغييرات المحلية الأول
+                git add .
+                git commit -m "Temp commit before pull" || echo "No changes"
 
+                # 🔁 نعمل pull
+                git pull --rebase origin main
+
+                # ✅ نكمّت تاني بعد الدمج
                 git add .
                 git commit -m "Update manifests from Jenkins pipeline" || echo "No changes"
+
+                # ⬆️ نـ Push
                 git push origin main
             '''
         }
