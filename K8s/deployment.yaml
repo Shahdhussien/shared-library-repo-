@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: finalproject
-        image: shahd0/myimg:219
+        image: shahd0/myimg:220
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
