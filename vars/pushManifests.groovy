@@ -11,6 +11,7 @@ def call() {
                 git config user.name "Jenkins"
                 git config user.email "jenkins@example.com"
                 git remote set-url origin https://${GIT_USER}:${GIT_TOKEN}@github.com/Shahdhussien/shared-library-repo-.git
+                git add .
                 git pull --rebase origin main
                 git add .
                 git commit -m "Temp stash before checkout" || echo "No changes"
