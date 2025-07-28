@@ -4,7 +4,7 @@ def call() {
         withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
         sh """
         pwd
-        trivy image "$DOCKER_USER"/myimg:"$BUILD_NUMBER"
+        trivy image $DOCKER_USER/myimg:$BUILD_NUMBER
         """
         }
     }
