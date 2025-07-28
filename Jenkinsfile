@@ -11,7 +11,7 @@ pipeline {
                 pushImage()
                 deleteImageLocally()
                 updateManifests()
-                // pushManifests()
+                pushManifests()
             }
         }
     }
