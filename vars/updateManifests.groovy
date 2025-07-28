@@ -2,7 +2,7 @@ def call() {
     stage('Update Manifests') {
         echo '📝 Updating Kubernetes manifests (YAML files) using sed...'
         sh '''
-        find k8s/ -name '*.yaml' -exec sed -i 's|image: my-app:.*|image: my-app:latest|' {} +
+        find K8s/ -name '*.yaml' -exec sed -i 's|image: my-app:.*|image: my-app:latest|' {} +
         '''
     }
 }
