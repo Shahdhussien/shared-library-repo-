@@ -5,7 +5,7 @@ def call() {
             sh """
                 echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
                 docker tag shahd0/myimg:latest $DOCKER_USER/myimg:latestt
-                docker push $DOCKER_USER/myimg:latest
+                docker push $DOCKER_USER/myimg:"$$BUILD_NUMBER"
             """
         }
     }
