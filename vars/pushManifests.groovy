@@ -14,15 +14,14 @@ def call() {
                 git init
                 git add .
                 git commit -m "Temp stash before checkout" || echo "No changes"
-                git branch -M main
+            
 
 
                 # 🧲 احصل على آخر نسخة من الريموت
                 git pull --rebase origin main
 
                 # ✅ أضف التغييرات الجديدة (من السطر اللي عدّلت فيه بـ sed مثلاً)
-                // git add .
-                // git commit -m "Update manifests from Jenkins pipeline" || echo "No changes"
+               
 
                 # 🚀 ادفع التحديثات للـ GitHub
                 git push origin main
