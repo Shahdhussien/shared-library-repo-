@@ -1,6 +1,8 @@
 def call() {
     stage('Update Manifests') {
-        echo 'Updating Kubernetes manifests...'
-        sh 'echo Simulating manifest update (replace with kustomize or sed command if needed)'
+        echo '📝 Updating Kubernetes manifests (YAML files) using sed...'
+        sh '''
+        find k8s/ -name '*.yaml' -exec sed -i 's|image: my-app:.*|image: my-app:latest|' {} +
+        '''
     }
 }

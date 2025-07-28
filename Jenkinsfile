@@ -9,8 +9,8 @@ pipeline {
                 buildImage()
                 scanImage()
                 pushImage()
-                // deleteImageLocally()
-                // updateManifests()
+                deleteImageLocally()
+                updateManifests()
                 // pushManifests()
             }
         }
