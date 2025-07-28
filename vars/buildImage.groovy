@@ -1,3 +1,6 @@
-// def call() {
-//   sh 'docker build -t your-image-name .'
-// }
+def call() {
+    stage('Build Image') {
+        echo ' Building Docker image...'
+        sh 'docker build -t shahd0/myimg:latest .'
+    }
+}

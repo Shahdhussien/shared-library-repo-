@@ -3,10 +3,15 @@
 pipeline {
      agent { label 'jenkins-agent-1' }
 
-    stages {
-        stage('Test Shared Library') {
+        stages {
+        stage('Pipeline Steps') {
             steps {
-                sayHello('Shahd')
+                buildImage()
+                scanImage()
+                pushImage()
+                // deleteImageLocally()
+                // updateManifests()
+                // pushManifests()
             }
         }
     }
