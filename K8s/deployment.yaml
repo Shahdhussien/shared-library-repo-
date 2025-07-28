@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: finalproject
-        image: flask-final-app:latest
-        imagePullPolicy: Never
+        image: shahd0/myimg:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 5000
