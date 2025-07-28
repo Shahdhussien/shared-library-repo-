@@ -1,6 +1,10 @@
 def call() {
     stage('Scan Image') {
         echo ' Scanning Docker image...'
-        sh 'trivy image $DOCKER_USER/my-app:latest'
+     //   withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+        sh """
+        trivy image "$DOCKER_USER"/my-app:latest
+        """
+        }
     }
-}
+// }
