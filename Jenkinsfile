@@ -11,7 +11,8 @@ pipeline {
                 pushImage()
                 deleteImageLocally()
                 updateManifests()
-                pushManifests("Update manifests")()
+                pushManifests()
+
             }
         }
    }
