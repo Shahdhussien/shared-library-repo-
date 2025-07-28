@@ -12,18 +12,15 @@ def call() {
     git config user.email "jenkins@example.com"
     git remote set-url origin https://${GIT_USER}:${GIT_TOKEN}@github.com/Shahdhussien/shared-library-repo-.git
 
-    # ✅ كومت أي تغييرات موجودة بالفعل
+    # دايمًا ارجعي لفرع main على الريموت
+    git fetch origin
+    git checkout -B main origin/main
+
+    # ضيفي التعديلات
     git add -A
-    git commit -m "Temp commit before rebase" || echo "No staged changes"
+    git commit -m "Update manifests from Jenkins pipeline" || echo "No changes"
 
-    # ✅ سحب آخر نسخة من الريموت
-    git pull --rebase origin main
-
-    # ✅ بعد الـ rebase، كومت أي تغييرات جديدة حصلت في البايبلاين
-    git add -A
-    git commit -m "Update manifests from Jenkins pipeline" || echo "No new changes"
-
-    # 🚀 بوش نهائي
+    # push طبيعي هيشتغل
     git push origin main
 '''
 
