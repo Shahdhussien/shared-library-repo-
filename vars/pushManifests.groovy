@@ -1,3 +1,5 @@
+
+
 def call() {
     stage('Push Manifests') {
         withCredentials([usernamePassword(
@@ -9,26 +11,26 @@ def call() {
                 git config user.name "Jenkins"
                 git config user.email "jenkins@example.com"
                 git remote set-url origin https://${GIT_USER}:${GIT_TOKEN}@github.com/Shahdhussien/shared-library-repo-.git
-
-                # 🔄 تأكد إنك على فرع main
-                git checkout main
-
-                # ✅ احفظ أي تغييرات علشان pull يشتغل
+                git init
                 git add .
-                git commit -m "Temp commit before pull" || echo "No changes"
+                git commit -m "Temp stash before checkout" || echo "No changes"
+                git branch -M main
 
-                # 🧲 pull بـ rebase عشان ما يحصلش تعارض
+
+                # 🧲 احصل على آخر نسخة من الريموت
                 git pull --rebase origin main
 
-                # ✅ اعمل التعديلات المطلوبة (لو في أي فرق)
+                # ✅ أضف التغييرات الجديدة (من السطر اللي عدّلت فيه بـ sed مثلاً)
                 git add .
                 git commit -m "Update manifests from Jenkins pipeline" || echo "No changes"
 
-                # ⬆️ Push للفرع الأصلي
+                # 🚀 ادفع التحديثات للـ GitHub
                 git push origin main
             '''
         }
     }
 }
+
+
 
 
