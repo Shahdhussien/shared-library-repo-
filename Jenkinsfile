@@ -28,33 +28,31 @@ pipeline {
                 buildImage()
             }
         }
-        // stage('Scan Docker Image') {
-        //     steps {
-        //         scanImage()
-        //     }
-        // }
-        // stage('Push Docker Image') {
-        //     steps {
-        //         pushImage()
-        //     }
-        // }
-        // stage('Delete Local Image') {
-        //     steps {
-        //         deleteImageLocally()
-        //     }
-        // }
-        // stage('Update Kubernetes Manifests') {
-        //     steps {
-        //         updateManifests()
-        //     }
-        // }
-        // stage('Push Kubernetes Manifests') {
-        //     steps {
-        //         pushManifests()
-        //     }
-        // }
+        stage('Scan Docker Image') {
+            steps {
+                scanImage()
+            }
+        }
+        stage('Push Docker Image') {
+            steps {
+                pushImage()
+            }
+        }
+        stage('Delete Local Image') {
+            steps {
+                deleteImageLocally()
+            }
+        }
+        stage('Update Kubernetes Manifests') {
+            steps {
+                updateManifests()
+            }
+        }
+        stage('Push Kubernetes Manifests') {
+            steps {
+                pushManifests()
+            }
+        }
     }
 }
 
-// git commit -m "Add ArgoCD file"
-// git push origin main
