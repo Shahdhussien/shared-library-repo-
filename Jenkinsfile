@@ -55,3 +55,6 @@ pipeline {
         // }
     }
 }
+
+// git commit -m "Add ArgoCD file"
+// git push origin main
